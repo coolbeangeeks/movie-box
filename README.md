@@ -18,3 +18,6 @@ configured a taildwind in the project
 - Netflix gpt
     search bar
     movie suggestion according to search bar input
+
+
+-----------------------------------------------------------------------------------------------
