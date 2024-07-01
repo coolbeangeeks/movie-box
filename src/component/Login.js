@@ -1,24 +1,87 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import {validateform} from '../utils/validate'
-
+import { createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import {onAuthStateChanged } from "firebase/auth";
+import {  updateProfile } from "firebase/auth";
+import { useDispatch } from 'react-redux'
+import { addUser } from '../utils/userslice';
 const Login = () => {
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
 
     const [issignInForm,setissignInForm]=useState(true);   // to toggel between sign and sign up component
     const [errorMessage,seterrorMessage]=useState(null);
 
+    const name =useRef(null);
     const email=useRef(null);
     const pass=useRef(null);
 
 
     const toggleform=()=>{
         setissignInForm(!issignInForm);
+
     }
 
     const handleformSubmit=()=>{
 
       const message=validateform(email.current.value,pass.current.value);
       seterrorMessage(message);
+
+      if(message)return;
+
+      if(!issignInForm){
+        
+
+
+createUserWithEmailAndPassword(auth, email.current.value,pass.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    updateProfile(auth.currentUser, {
+      displayName: name.current.valuea
+    }).then(() => {
+      const {uid,email,displayName} = auth.currentUser;
+      dispatch(addUser({
+        uid:uid,
+        email:email,
+        displayName:displayName
+
+      }))
+
+      navigate("/browse")
+    }).catch((error) => {
+      seterrorMessage(error)
+    });
+    
+   
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
+      }
+      else{
+        signInWithEmailAndPassword(auth, email.current.value, pass.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    navigate('/browse')
+ 
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    seterrorMessage(errorCode+errorMessage)
+  });
+
+      }
 
     }
   return (
@@ -31,7 +94,7 @@ const Login = () => {
     </div>
     <form onSubmit={(e)=>e.preventDefault()} className='bg-gray-950 p-8 rounded z-20 text-white flex flex-col w-1/3 gap-9 justify-center items-center bg-opacity-85'>
         <h1 className='font-bold text-red-500 text-2xl font-serif '>{issignInForm ? "Sign in" :'Sign Up'}</h1>
-        {!issignInForm && <input className='p-3 rounded-lg w-3/4 text-black'type="text" placeholder='Enter Name'/>}
+        {!issignInForm && <input ref={name} className='p-3 rounded-lg w-3/4 text-black'type="text" placeholder='Enter Name'/>}
 
         <input ref={email} className='p-3 rounded-lg w-3/4 text-black'type="text" placeholder='Enter email'/>
         <input ref={pass} className='p-3 rounded-lg w-3/4 border-none text-black'type="password" placeholder='password'/>

@@ -21,3 +21,8 @@ configured a taildwind in the project
 
 
 -----------------------------------------------------------------------------------------------
+# start project
+1- made header
+2- sign up sign in screen 
+3- router 
+4- form validate
