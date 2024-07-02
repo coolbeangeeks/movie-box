@@ -1,7 +1,11 @@
-import React from 'react'
+import useCurrentPlaying from '../CustomHoooks/useCurrentplaying'
 import Header from './Header'
 
 const Browse = () => {
+
+  useCurrentPlaying();
+
+  
   return (
     <div>
       <Header/>

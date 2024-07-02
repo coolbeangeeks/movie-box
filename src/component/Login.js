@@ -3,13 +3,10 @@ import Header from './Header'
 import {validateform} from '../utils/validate'
 import { createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
-import {onAuthStateChanged } from "firebase/auth";
 import {  updateProfile } from "firebase/auth";
 import { useDispatch } from 'react-redux'
 import { addUser } from '../utils/userslice';
 const Login = () => {
-  const navigate=useNavigate()
   const dispatch=useDispatch()
 
     const [issignInForm,setissignInForm]=useState(true);   // to toggel between sign and sign up component
@@ -41,7 +38,7 @@ createUserWithEmailAndPassword(auth, email.current.value,pass.current.value)
     // Signed up 
     const user = userCredential.user;
     updateProfile(auth.currentUser, {
-      displayName: name.current.valuea
+      displayName: name.current.value
     }).then(() => {
       const {uid,email,displayName} = auth.currentUser;
       dispatch(addUser({
@@ -51,7 +48,6 @@ createUserWithEmailAndPassword(auth, email.current.value,pass.current.value)
 
       }))
 
-      navigate("/browse")
     }).catch((error) => {
       seterrorMessage(error)
     });
@@ -71,7 +67,7 @@ createUserWithEmailAndPassword(auth, email.current.value,pass.current.value)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    navigate('/browse')
+   
  
     // ...
   })
