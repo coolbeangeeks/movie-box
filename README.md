@@ -32,5 +32,10 @@ configured a taildwind in the project
 8- fix the routing bug(if logout do not take to the browse page)
 9- made the movie slice state in the for storing the data of the movie
 10- use the custom hook to fetch the data of the movies
-11- 
+11- made the bakground video in the main container 
+12- use the custom hook to fetch the data of the trailer
+13- add the traler video in the movie slice
+14- building secondary component
+
+
 
