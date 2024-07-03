@@ -1,5 +1,6 @@
 import useCurrentPlaying from '../CustomHoooks/useCurrentplaying'
 import Header from './Header'
+import MainVideoContainer from './MainVideoContainer';
 
 const Browse = () => {
 
@@ -9,6 +10,7 @@ const Browse = () => {
   return (
     <div>
       <Header/>
+      <MainVideoContainer/>
     </div>
   )
 }

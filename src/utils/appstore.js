@@ -5,7 +5,7 @@ const appstore=configureStore(
     {
         reducer:{
             user:userslice,
-            movie:movieSlice
+            movies:movieSlice
         }
     }
 )

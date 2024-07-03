@@ -8,7 +8,7 @@ import { logo } from '../utils/constant';
 const Header = () => {
   const dispatch=useDispatch()
   const navigate= useNavigate()
-  const userselector=useSelector((state)=>state.user)
+  const userselector=useSelector((store)=>store.user)
   const handlesignout=()=>{
     signOut(auth).then(() => {
 
@@ -41,7 +41,7 @@ const Header = () => {
   return (
 <div className='flex justify-between'>
 {userselector ? (
-        <div className='flex justify-between bg-gray-950 w-full'>
+        <div className='flex justify-between bg-black w-full'>
           <div className='w-44'>
             <img src={logo} alt="logo" />
           </div>
