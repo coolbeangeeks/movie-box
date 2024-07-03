@@ -36,6 +36,11 @@ configured a taildwind in the project
 12- use the custom hook to fetch the data of the trailer
 13- add the traler video in the movie slice
 14- building secondary component
+15- fetch the data from the tmdb popular movie and added to it my redux store.
+16- fetch the data from the tmdb trending movie and added to it my redux store.
+17- fetch the data from the tmdb Tvshow movie and added to it my redux store.
+18- fetch the data from the tmdb Toprated movie and added to it my redux store.
+
 
 
 
