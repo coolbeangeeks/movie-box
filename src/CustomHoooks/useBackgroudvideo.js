@@ -23,5 +23,5 @@ import { useEffect } from "react";
 
         getMoviTrailer();
 
-    },[])
+    })
 }

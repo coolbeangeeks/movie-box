@@ -16,7 +16,7 @@ const usePopularmovie=()=>{
   useEffect(()=>{
     getPoularList();
 
-  },[])
+  })
 }
 
 export default usePopularmovie;

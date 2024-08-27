@@ -16,6 +16,6 @@ const useTVshow=()=>{
   useEffect(()=>{
     getTVshow();
 
-  },[])
+  })
 }
 export default useTVshow

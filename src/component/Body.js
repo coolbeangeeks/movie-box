@@ -3,6 +3,8 @@ import Login from './Login'
 import Browse from './Browse'
 import {createBrowserRouter} from 'react-router-dom'
 import { RouterProvider } from 'react-router-dom'
+import Detailpage from './Detailpage'
+import ImdbMovie from './ImdbMovie'
 
 const Body = () => {
 
@@ -14,7 +16,17 @@ const Body = () => {
         {
             path:'/browse',
             element:<Browse/>
-        }
+        },
+        {
+            path:'/details/:id',
+            element:<Detailpage/>
+        },
+        {
+            path:'/imdb',
+            element:<ImdbMovie/>
+        },
+
+
     ])
 
   return (

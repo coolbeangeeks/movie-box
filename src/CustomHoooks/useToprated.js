@@ -17,7 +17,7 @@ const useToprated=()=>{
   useEffect(()=>{
     gettopratedList();
 
-  },[])
+  })
 }
 
 export default useToprated;

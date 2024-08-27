@@ -16,7 +16,7 @@ const useCurrentPlaying=()=>{
   useEffect(()=>{
     getMovieList();
 
-  },[])
+  })
 }
 
 export default useCurrentPlaying;
